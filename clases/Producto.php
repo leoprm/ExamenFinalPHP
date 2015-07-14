@@ -4,34 +4,30 @@ require __DIR__.'/../libs/db/db.php';
 
 if( !in_array('Producto', get_declared_classes()) ){
 	class Producto{
-		private $nombreprod;
+		private $nombre;
 		private $sdescripcion;
 		private $sprecio;
-		private $sdimanc;
-		private $sdimal;
-		private $imagen;
-		private $cantidad;
+		private $tipoProd;
+		private $unidades;
 		private $db;
 
-		function __construct($nom = '',$descr = '',$sprec = 0,$diman = 0,$dimal = 0,$dimg = '',$cant = 0){
-			$this->nombreprod=$nom;
+		function __construct($nom = '',$descr = '',$sprec = 0,$dtip = '',$uni = 0){
+			$this->nombre=$nom;
 			$this->sdescripcion=$descr;	
 			$this->sprecio=$sprec;	
-			$this->sdimanc=$diman;
-			$this->sdimal=$dimal;	
-			$this->imagen=$dimg;
-			$this->cantidad=$cant;
+			$this->tipoProd=$dtip;
+			$this->unidades=$uni;
 
 			$this->db = new DB();
 		}
 
-		function AgregarProducto($categoria,$color,$usuario){
+		function AgregarProducto(){
 			/*Definición del query que permitira ingresar un nuevo registro*/
-			$sqlins="insert into PRODUCTO(idcategori,idusuario,nombreprod,descripprod,precio,dimancho,dimalto,imagenprod,color,cantidad)
-			values(:cate,:usr,:nomprod,:desc,:prec,:danc,:dalt,:img,:colr,:cant)";
+			$sqlins="insert into PRODUCTOS(id,nombre,descripcion,precio,unidades,tipo_productos_id)
+			values(null,:nom,:desc,:prec,:uni,:tpi)";
 			/*Verifica que el producto no exista*/
-			if ($this->traerProducto($this->nombreprod)){
-				echo "El produto $this->nombreprod existe en la base de datos.";
+			if ($this->traerProducto($this->nombre)){
+				echo "El producto $this->nombre ya existe en la base de datos.";
 				return false;
 			}
 			/*Preparación SQL*/
@@ -44,17 +40,11 @@ if( !in_array('Producto', get_declared_classes()) ){
 			}
 			
 			/*Asignación de parametros utilizando bindparam*/
-			$queryins->bindParam(':cate',$categoria);
-			$queryins->bindParam(':colr',$color);
-			$queryins->bindParam(':usr',$usuario);
-			$queryins->bindParam(':nomprod',$this->nombreprod);
-			$queryins->bindParam(':desc',$this->sdescripcion);
-			$queryins->bindParam(':prec',$this->sprecio);
-			$queryins->bindParam(':danc',$this->sdimanc);
-			$queryins->bindParam(':dalt',$this->sdimal);
-			$queryins->bindParam(':img',$this->imagen);
-			$queryins->bindParam(':cant',$this->cantidad);
-			
+			$queryins->bindParam(':nom',$nombre);
+			$queryins->bindParam(':desc',$sdescripcion);
+			$queryins->bindParam(':prec',$sprecio);
+			$queryins->bindParam(':uni',$this->unidades);
+	
 			try {
 				$queryins->execute();
 			}
@@ -67,28 +57,28 @@ if( !in_array('Producto', get_declared_classes()) ){
 		}
 
 
-		function porCategoria($categoria,$limit = null){
+		function porTipo($tipoProd,$limit = null){
 			/*Definición del query que permitira buscar un registrocon filtro*/
 			$limitText = ( is_integer($limit) ) ? ' LIMIT '.$limit : '';
-			$sql = "SELECT * FROM PRODUCTO WHERE idcategori=:cat".$limitText;;
+			$sql = "SELECT * FROM PRODUCTOS WHERE tipo_productos_id=:tipo".$limitText;;
 			
 			$query = $this->db->conexion->prepare($sql);
-			$query->bindParam(':cat',$categoria);		
+			$query->bindParam(':tipo',$tipoProd);		
 			
 			$query->execute();		
 			return $query;		
 		}
 
 
-		function traerProducto($nombreprod){
+		function traerProducto($nombre){
 			/*Definición del query que permitira traer un nuevo registro*/
-			$sqlsel="select * from PRODUCTO	where nombreprod=:prod";
+			$sqlsel="select * from PRODUCTOS where nombre=:prod";
 
 			/*Preparación SQL*/
 			$querysel=$this->db->conexion->prepare($sqlsel);
 
 			/*Asignación de parametros utilizando bindparam*/
-			$querysel->bindParam(':prod',$nombreprod);
+			$querysel->bindParam(':prod',$nombre);
 
 			$querysel->execute();
 
@@ -99,8 +89,8 @@ if( !in_array('Producto', get_declared_classes()) ){
 
 		public function buscarPorID($idprod){
 			/*Definición del query que permitira traer un nuevo registro*/
-			$sqlsel="select * from PRODUCTO
-			where IDPROD=:prod";
+			$sqlsel="select * from PRODUCTOS
+			where ID=:prod";
 		 
  			/*Preparación SQL*/
  			$querysel = $this->db->conexion->prepare($sqlsel);
@@ -113,13 +103,13 @@ if( !in_array('Producto', get_declared_classes()) ){
 		function obtenerTodos($limit = null,$excluir = []){
 			$limitText = ( is_integer($limit) ) ? ' LIMIT '.$limit : '';
 
-			$excluirText = (count($excluir) > 0) ? ' WHERE IDPROD NOT IN( ' : '';
+			$excluirText = (count($excluir) > 0) ? ' WHERE ID NOT IN( ' : '';
 			foreach ($excluir as $valor){
 				$excluirText .= ( is_numeric($valor) ) ? addslashes($valor).',' : '';
 			}
-			$excluirText = (count($excluir) > 0 && $excluirText != ' WHERE IDPROD NOT IN( ' ) ? substr($excluirText, 0,-1).')' : '';
+			$excluirText = (count($excluir) > 0 && $excluirText != ' WHERE ID NOT IN( ' ) ? substr($excluirText, 0,-1).')' : '';
 
-			$sql = "SELECT * FROM PRODUCTO ".$excluirText." ORDER BY RAND()".$limitText;
+			$sql = "SELECT * FROM PRODUCTOS ".$excluirText." ORDER BY RAND()".$limitText;
 
 			$query = $this->db->conexion->prepare($sql);		
 			$query->execute();
@@ -130,7 +120,7 @@ if( !in_array('Producto', get_declared_classes()) ){
 		function eliminaProducto($idproducto){
 
 			/*Definición del query que permitira eliminar un registro*/
-			$sqldel="delete from producto where IDPROD=:id";
+			$sqldel="delete from producto where ID=:id";
 
 			/*Preparación SQL*/
 			$querydel=$this->db->conexion->prepare($sqldel);
@@ -147,12 +137,11 @@ if( !in_array('Producto', get_declared_classes()) ){
 			return true;
 		}
 		
-		function actualizaProducto($idprod,$categoria,$color,$usuario){
+		function actualizaProducto($idprod){
 
 			/*Definicion del query que permitira actualizar */
-			$sqlupd="update producto
-			set idcategori=:cate ,idusuario=:usr,nombreprod=:nomprod,descripprod=:desc,precio=:prec,dimancho=:danc
-			,dimalto=:dalt,imagenprod=:img,color=:colr,cantidad=:cant  
+			$sqlupd="update PRODUCTOS
+			set id=:idprod ,nombre=:nomprod,descripcion=:desc,precio=:prec,tipo_productos_id=:tpi,unidades=:uni  
 			where IDPROD=:id";
 
 
@@ -166,17 +155,12 @@ if( !in_array('Producto', get_declared_classes()) ){
 			}
 			
 			/*Asignacion de parametros utilizando bindparam*/
-			$queryup->bindParam(':cate',$categoria);
 			$queryup->bindParam(':id',$idprod);
-			$queryup->bindParam(':colr',$color);
-			$queryup->bindParam(':usr',$usuario);
-			$queryup->bindParam(':nomprod',$this->nombreprod);
+			$queryup->bindParam(':nomprod',$this->nombre);
 			$queryup->bindParam(':desc',$this->sdescripcion);
 			$queryup->bindParam(':prec',$this->sprecio);
-			$queryup->bindParam(':danc',$this->sdimanc);
-			$queryup->bindParam(':dalt',$this->sdimal);
-			$queryup->bindParam(':img',$this->imagen);
-			$queryup->bindParam(':cant',$this->cantidad);
+			$queryup->bindParam(':tip',$this->tipoProd);
+			$queryup->bindParam(':uni',$this->unidades);
 
 			try {
 				$queryup->execute();
