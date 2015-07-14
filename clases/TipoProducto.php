@@ -11,7 +11,7 @@
 
 require __DIR__.'/../libs/db/db.php';
 
-class TipoProductos
+class TipoProducto
 { 
 	private $nombre;
 	private $descripcion;

@@ -2,7 +2,7 @@
 	        	<div class="pull-right hidden-xs">
 	          		<b>Version</b> 1.0
 	        	</div>
-	        	<strong>Copyright &copy; 2015 <a href="<?= ROOT_ADMIN ?>">Mira en tu Interior</a></strong>
+	        	<strong>Copyright &copy; 2015 <a href="<?= ROOT_URL ?>">Mira en tu Interior</a></strong>
 	      	</footer>
 	    </div>
 

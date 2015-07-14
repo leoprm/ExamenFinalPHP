@@ -46,10 +46,10 @@
 				</a>
 				<ul class="treeview-menu">
 				  	<li>
-				  		<a href="<?= ROOT_ADMIN ?>agregar-producto.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
+				  		<a href="<?= ROOT_URL ?>agregar-producto.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
 				  	</li>
 				  	<li>
-				  		<a href="<?= ROOT_ADMIN ?>productos.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
+				  		<a href="<?= ROOT_URL ?>productos.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
 				  	</li>
 				</ul>
 			</li>
@@ -59,27 +59,27 @@
 	  			</a>
 	  			<ul class="treeview-menu">
 				  	<li>
-				  		<a href="<?= ROOT_ADMIN ?>agregar-categoria.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
+				  		<a href="<?= ROOT_URL ?>agregar-categoria.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
 				  	</li>
 				  	<li>
-				  		<a href="<?= ROOT_ADMIN ?>categorias.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
+				  		<a href="<?= ROOT_URL ?>categorias.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
 				  	</li>
 				</ul>
 			</li>
 			<li>
-	  			<a href="<?= ROOT_ADMIN ?>contactos.php">
+	  			<a href="<?= ROOT_URL ?>contactos.php">
 	    			<i class="fa fa-group"></i> <span>Contactos</span>
 	  			</a>
 			</li>
 
 			<!-- Accessos Rapidos -->
 			<li class="header">ATAJOS</li>
-			<li><a href="<?= ROOT_ADMIN ?>contactos.php?filter=Comprar"><i class="fa fa-circle-o text-green"></i> <span>Futuro Cliente</span></a></li>
-			<li><a href="<?= ROOT_ADMIN ?>contactos.php?filter=Reclamos"><i class="fa fa-circle-o text-red"></i> <span>Reclamos</span></a></li>
-			<li><a href="<?= ROOT_ADMIN ?>contactos.php?filter=Sugerencias"><i class="fa fa-circle-o text-yellow"></i> <span>Sugerencias</span></a></li>
-			<li><a href="<?= ROOT_ADMIN ?>contactos.php?filter=ContactoEmpresarial"><i class="fa fa-circle-o text-aqua"></i> <span>Consultas Empresa</span></a></li>
-			<li><a href="<?= ROOT_ADMIN ?>perfil.php"><i class="fa fa-user"></i> <span>Mi Perfil</span></a></li>
-			<li><a href="<?= ROOT_ADMIN ?>logout.php"><i class="fa fa-sign-out"></i> <span>Cerrar Sesión</span></a></li>
+			<li><a href="<?= ROOT_URL ?>contactos.php?filter=Comprar"><i class="fa fa-circle-o text-green"></i> <span>Futuro Cliente</span></a></li>
+			<li><a href="<?= ROOT_URL ?>contactos.php?filter=Reclamos"><i class="fa fa-circle-o text-red"></i> <span>Reclamos</span></a></li>
+			<li><a href="<?= ROOT_URL ?>contactos.php?filter=Sugerencias"><i class="fa fa-circle-o text-yellow"></i> <span>Sugerencias</span></a></li>
+			<li><a href="<?= ROOT_URL ?>contactos.php?filter=ContactoEmpresarial"><i class="fa fa-circle-o text-aqua"></i> <span>Consultas Empresa</span></a></li>
+			<li><a href="<?= ROOT_URL ?>perfil.php"><i class="fa fa-user"></i> <span>Mi Perfil</span></a></li>
+			<li><a href="<?= ROOT_URL ?>logout.php"><i class="fa fa-sign-out"></i> <span>Cerrar Sesión</span></a></li>
 			</ul>
 	</section>
 </aside>

@@ -1,5 +1,5 @@
 	<header class="main-header">
-    	<a href="<?= ROOT_ADMIN ?>" class="logo">
+    	<a href="<?= ROOT_URL ?>" class="logo">
       		<!-- logo mini 50x50 pixels -->
       		<span class="logo-mini"><b>MT</b>I</span>
       		<!-- logo grande -->
@@ -25,28 +25,28 @@
               				<li>
 			                    <ul class="menu">
 			                      	<li>
-						      			<a href="<?= ROOT_ADMIN ?>contactos.php?filter=interesados">
+						      			<a href="<?= ROOT_URL ?>contactos.php?filter=interesados">
 						        			<i class="fa fa-dollar text-green"></i> 3 interesados en comprar
 						      			</a>
 						    		</li>
 						    		<li>
-						      			<a href="<?= ROOT_ADMIN ?>contactos.php?filter=reclamos">
+						      			<a href="<?= ROOT_URL ?>contactos.php?filter=reclamos">
 						        			<i class="fa fa-close text-red"></i> 2 con reclamos
 						      			</a>
 						    		</li>
 						    		<li>
-						      			<a href="<?= ROOT_ADMIN ?>contactos.php?filter=sugerencias">
+						      			<a href="<?= ROOT_URL ?>contactos.php?filter=sugerencias">
 						        			<i class="fa fa-wrench text-yellow"></i> 1 con sugerencias
 						      			</a>
 						    		</li>
 									<li>
-						      			<a href="<?= ROOT_ADMIN ?>contactos.php?filter=contacto-general">
+						      			<a href="<?= ROOT_URL ?>contactos.php?filter=contacto-general">
 						        			<i class="fa fa-university text-aqua"></i> 1 consulta empresarial
 						      			</a>
 						    		</li>
 			                    </ul>
               				</li>
-              				<li class="footer"><a href="<?= ROOT_ADMIN ?>contactos.php">Ver todos los contactos</a></li>
+              				<li class="footer"><a href="<?= ROOT_URL ?>contactos.php">Ver todos los contactos</a></li>
             			</ul>
           			</li>
           			<!-- Usuario Logeado -->
@@ -67,10 +67,10 @@
               				<!-- Menu Footer-->
               				<li class="user-footer">
                 				<div class="pull-left">
-                  					<a href="<?= ROOT_ADMIN ?>perfil.php" class="btn btn-default btn-flat">Perfil</a>
+                  					<a href="<?= ROOT_URL ?>perfil.php" class="btn btn-default btn-flat">Perfil</a>
                 				</div>
                 				<div class="pull-right">
-                  					<a href="<?= ROOT_ADMIN ?>logout.php" class="btn btn-default btn-flat">Cerrar Sesión</a>
+                  					<a href="<?= ROOT_URL ?>logout.php" class="btn btn-default btn-flat">Cerrar Sesión</a>
                 				</div>
               				</li>
             			</ul>
