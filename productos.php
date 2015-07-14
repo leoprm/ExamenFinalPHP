@@ -89,7 +89,7 @@
                                     <th>Producto</th>
                                     <th>Descripción</th>
                                     <th>Precio</th>
-                                    <th>imagen</th>
+                                    <th>Cantidad</th>
                                     <th>tipo</th>
                                     <th>Acciones</th>
                                 </tr>
@@ -100,26 +100,24 @@
                                     <th>Producto</th>
                                     <th>Descripción</th>
                                     <th>Precio</th>
-                                    <th>imagen</th>
-                                    <th>tipo</th>
+                                    <th>Cantidad</th>
+                                    <th>Tipo</th>
                                     <th>Acciones</th>
                                 </tr>
                             </tfoot>
                             <tbody>
                             <?php foreach ($listaProducto as $row){ ?>               
                             <tr>
-                                <td><?=$row['IDPROD']?></td>
-                                <td><?=$row['NOMBREPROD']?></td>
-                                <td><?=$row['DESCRIPPROD']?></td>
+                                <td><?=$row['ID']?></td>
+                                <td><?=$row['NOMBRE']?></td>
+                                <td><?=$row['DESCRIPCION']?></td>
                                 <td><?=$row['PRECIO']?></td>
-                                <td><?=$row['DIMANCHO']?></td>
-                                <td><?=$row['DIMALTO']?></td>
-                                <td><?=$row['IMAGENPROD']?></td>
+                                <td><?=$row['UNIDADES']?></td>
                                 <td><?=$row['tipo_productos_id']?></td>
                                 <td>
                                     <div class="form-group">
                                         <div class="col-md-2 col-sm-4 col-xs-8" >
-                                            <a href="<?= ROOT_URL ?>save/delete-producto.php?id=<?= $row['IDPROD'] ?>&img=<?= $row['IMAGENPROD']  ?>&nom=<?= $row['NOMBREPROD']  ?>" 
+                                            <a href="<?= ROOT_URL ?>save/delete-producto.php?id=<?= $row['ID'] ?>&nom=<?= $row['NOMBRE']  ?>" 
                                                     class="btn btn-danger" 
                                                     onClick="return confirmation()">
                                                     <span class="glyphicon glyphicon-trash"></span>
@@ -128,11 +126,10 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-2 col-sm-4 col-xs-8">
-                                            <a href="<?= ROOT_URL ?>update-producto.php?id=<?= $row['IDPROD'] ?>&nom=<?= $row['NOMBREPROD']  ?>&
-                                             des=<?= $row['DESCRIPPROD']  ?>&pre=<?= $row['PRECIO']  ?>&anc=<?= $row['DIMANCHO']  ?>
-                                             &alt=<?= $row['DIMALTO']  ?>&cnt=<?= $row['tipo_productos_id']  ?>&
-                                              cate=<?= $row['IDCATEGORI']  ?>&img=<?= $row['IMAGENPROD']  ?>" class="btn btn-info"><span class="glyphicon glyphicon-refresh"></span></a>
-                                              <?php $_SESSION['color'] = $row['COLOR'] ;?>
+                                            <a href="<?= ROOT_URL ?>update-producto.php?id=<?= $row['ID'] ?>&nom=<?= $row['NOMBRE']  ?>&
+                                             des=<?= $row['DESCRIPCION']  ?>&pre=<?= $row['PRECIO']  ?>
+                                             &uni=<?= $row['UNIDADES']  ?>&cnt=<?= $row['tipo_productos_id']  ?>&
+                                              tipo=<?= $row['IDTIPO']  ?>" class="btn btn-info"><span class="glyphicon glyphicon-refresh"></span></a>
                                         </div>
                                     </div>
 
@@ -141,11 +138,6 @@
                             <?php }  ?>  
                             </tbody>
                         </table>
-                        <div class="form-group">
-                                        <div class="col-md-2 col-sm-4 col-xs-8">
-                                            <a href="<?= ROOT_URL ?>imprimepdf.php" class="btn btn-primary"><span class="glyphicon glyphicon-print"></span></a>
-                                        </div>
-                        </div>
                     </div>
                 </div>
             </div>
