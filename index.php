@@ -15,7 +15,7 @@
 	require __DIR__.'/templates/header.php';
 	require __DIR__.'/templates/menu.php';
 	require __DIR__.'/templates/sidebar.php';
-	/*require __DIR__.'/clases/Producto.php';*/
+	require __DIR__.'/clases/Producto.php';
 
 	$modeloProducto = new Producto();
 	$listaProducto = $modeloProducto->obtenerTodos();
