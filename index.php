@@ -1,1 +1,4 @@
-//Aqui se hara el login de usuario.
+<!--Aqui se hara el login de usuario.-->
+<?php
+requiere 
+?>	
