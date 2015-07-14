@@ -16,9 +16,15 @@
 	require __DIR__.'/templates/menu.php';
 	require __DIR__.'/templates/sidebar.php';
 	require __DIR__.'/clases/Producto.php';
+	require __DIR__.'/clases/TipoProducto.php';
+	require __DIR__.'/clases/Usuario.php';
 
 	$modeloProducto = new Producto();
 	$listaProducto = $modeloProducto->obtenerTodos();
+	$modeloTipo = new TipoProducto();
+	$listaTipo = $modeloTipo->obtenerLista();
+	$modeloUsuario = new Usuario();
+	$listaUsuario = $modeloUsuario->obtenerLista();
 
 	/*
 	|--------------------------------------------------------------------------
@@ -51,8 +57,8 @@
 			  	<div class="info-box">
 			    	<span class="info-box-icon bg-red"><i class="fa fa-tags"></i></span>
 			    	<div class="info-box-content">
-			      		<span class="info-box-text">Categorias</span>
-			      		<span class="info-box-number">4</span>
+			      		<span class="info-box-text">Tipos</span>
+			      		<span class="info-box-number"><?=$listaTipo->rowcount()?></span>
 			    	</div>
 				</div>
 			</div>
@@ -73,8 +79,8 @@
 			  	<div class="info-box">
 			    	<span class="info-box-icon bg-yellow"><i class="fa fa-group"></i></span>
 			    	<div class="info-box-content">
-			      		<span class="info-box-text">Contactos</span>
-			      		<span class="info-box-number">30</span>
+			      		<span class="info-box-text">Usuarios</span>
+			      		<span class="info-box-number"><?=$listaUsuario->rowcount()?></span>
 			    	</div>
 			  	</div>
 			</div>

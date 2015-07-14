@@ -14,7 +14,7 @@ class Usuario{
 	public $nacimiento;
 	public $db;
 
-	function __construct($corr,$pass,$nom=null,$ape=null,$ed=null,$perf=null,$nac=null,$log=null){
+	function __construct($corr=null,$pass=null,$nom=null,$ape=null,$ed=null,$perf=null,$nac=null,$log=null){
 		$this->login        = $log;
 		$this->password     = md5($pass);		
 		$this->nombre       = $nom;	
@@ -68,6 +68,16 @@ class Usuario{
 	
 		if ($querysel->rowcount()==1)return $querysel; else return false;
 	
+	}
+	function ObtenerLista(){
+		/*Definición del query que permitira obtener la lista de usuarios*/
+		$sqlsel="select * from USUARIOS";
+		
+		/*Preparación SQL*/
+		$querylis = $this->db->conexion->prepare($sqlsel);
+		$querylis->execute();	
+
+		return $querylis;
 	}
 	
 }
