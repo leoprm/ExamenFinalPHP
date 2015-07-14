@@ -13,6 +13,7 @@
 	$modeloProducto = new Producto();
 	$listaProducto = $modeloProducto->obtenerTodos();
 
+
 	/*
 	|--------------------------------------------------------------------------
 	| Contenido del Sitio
@@ -55,21 +56,29 @@
 			</li>
 			<li class="treeview">
 	  			<a href="#">
-	    			<i class="fa fa-tags"></i> <span>Categorias</span> <small class="label pull-right bg-blue">6</small>
+	    			<i class="fa fa-tags"></i> <span>Tipos</span> <small class="label pull-right bg-blue">6</small>
 	  			</a>
 	  			<ul class="treeview-menu">
 				  	<li>
-				  		<a href="<?= ROOT_URL ?>agregar-categoria.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
+				  		<a href="<?= ROOT_URL ?>agregar-tipo.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
 				  	</li>
 				  	<li>
-				  		<a href="<?= ROOT_URL ?>categorias.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
+				  		<a href="<?= ROOT_URL ?>tipos.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
 				  	</li>
 				</ul>
 			</li>
 			<li>
 	  			<a href="<?= ROOT_URL ?>contactos.php">
-	    			<i class="fa fa-group"></i> <span>Contactos</span>
+	    			<i class="fa fa-group"></i> <span>Usuarios</span>
 	  			</a>
+	  			<ul class="treeview-menu">
+				  	<li>
+				  		<a href="<?= ROOT_URL ?>agregar-usuario.php"><i class="fa fa-plus-circle"></i> Agregar Nuevo</a>
+				  	</li>
+				  	<li>
+				  		<a href="<?= ROOT_URL ?>usuarios.php"><i class="fa fa-list-ul"></i> Ver Todos</a>
+				  	</li>
+				</ul>
 			</li>
 
 			<!-- Accessos Rapidos -->
